@@ -1,0 +1,717 @@
+.book__library {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.book__library-filter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book__library-filter {
+  width: 90%;
+  border-radius: 15px;
+  border: 1px solid #e6e6e6;
+  padding: 25px 0 40px 0;
+  margin-bottom: 25px;
+}
+
+.book__library-filter-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0 40px 15px 40px;
+}
+
+.book__library-filter-content {
+  padding: 15px 40px 0 40px;
+}
+
+.form-check-label {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.form-check {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.book__library-filter-content .rating {
+  position: relative;
+  top: -1px;
+}
+
+.book__library-list {
+  width: 100%;
+  padding-right: 20px;
+}
+
+/* ===== TOOLBAR ===== */
+.my-book__library-list-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.my-book__library-list-toolbar-search {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.my-book__library-list-toolbar-search .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #888;
+  pointer-events: none;
+}
+
+.my-book__library-list-toolbar-search input {
+  padding: 10px 14px 10px 36px;
+  border: 1px solid #ccc;
+  border-radius: 36px;
+  font-size: 15px;
+  width: 100%;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.my-book__library-list-toolbar-search input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.my-book__library-list-toolbar-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.my-book__library-list-toolbar-sort label {
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.my-book__library-list-toolbar-sort select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 180px;
+  background-color: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.my-book__library-list-toolbar-sort select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* ===== BOOK CARDS ===== */
+.book__library-list-book-element-wrapper {
+  padding: 0 12px;
+  border-right: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+
+.book__library-list-book-element-image {
+  position: relative;
+  cursor: pointer;
+}
+
+.book__library-list-book-element-image img {
+  width: 100%;
+  height: 300px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.book__library-list-book-element-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book__library-list-book-element-title:hover {
+  color: #f55d58;
+  cursor: pointer;
+}
+
+.book__library-list-book-element-information {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 1.6rem;
+}
+
+.book__library-list-book-element-information .rating {
+  font-size: 1.3rem;
+}
+
+.book__library-list-book-element-author {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  font-size: 1.6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book__library-list-book-element-author:hover {
+  color: #f55d58;
+  cursor: pointer;
+}
+
+.book__library-list-book-element-price {
+  font-size: 2rem;
+  color: #f55d58;
+}
+
+/* ===== ACTION ICONS ===== */
+.home__book-action-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  display: flex;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.home__book-action-favorite-icon,
+.home__book-action-preview-icon,
+.home__book-action-borrow-icon {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.home__book-action-favorite-icon:hover,
+.home__book-action-preview-icon:hover,
+.home__book-action-borrow-icon:hover {
+  background-color: #f55c4e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.book__library-list-book-element-image:hover .home__book-action-icon {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* ===== PAGINATION ===== */
+.book__library-list-book-navigation-page {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.pagination {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px #ddd;
+  font-family: Arial, sans-serif;
+}
+
+.page-item {
+  margin: 0;
+}
+
+.page-link {
+  display: block;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  transition: background-color 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.page-item:last-child .page-link {
+  border-right: none;
+}
+
+.page-link:hover {
+  background-color: #f2f2f2;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+  cursor: default;
+}
+
+.page-item.disabled .page-link {
+  color: #aaa;
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+}
+
+/* ===== STATUS BADGES ===== */
+.book__library-list-book-element-quantity {
+  color: #333;
+  font-weight: 500;
+}
+
+.book__library-list-book-element-extended {
+  margin-top: 2px;
+}
+
+.extended-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: linear-gradient(135deg, #6f42c1, #5a34a0);
+  box-shadow: 0 2px 6px rgba(111, 66, 193, 0.4);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.book__library-list-book-element {
+  position: relative;
+}
+
+.badge-favorite {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, #ff6b81, #ff4d4d);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(255, 107, 129, 0.4);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-favorite span {
+  color: white;
+}
+
+.home__book-action-favorite-icon.favorite {
+  background-color: #f55c4e;
+  color: #fff;
+}
+
+.book__library-list-book-element-status.status-not_borrowed {
+  margin-top: 29px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.book__library-list-book-element-status.status-not_borrowed:hover {
+  background: linear-gradient(135deg, #889bff 0%, #9b6dcb 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.book__library-list-book-element-status {
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-align: center;
+  margin: 2px 0;
+}
+
+.status-pending {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  color: #5c3d00;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(253, 203, 110, 0.25);
+  text-transform: uppercase;
+}
+
+.status-approved {
+  background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 184, 148, 0.25);
+  text-transform: uppercase;
+}
+
+.status-denied {
+  background: linear-gradient(135deg, #ff6b00 0%, #d35400 100%);
+  box-shadow: 0 3px 8px rgba(211, 84, 0, 0.45);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.status-returned {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(9, 132, 227, 0.25);
+  text-transform: uppercase;
+}
+
+.status-lost {
+  background: linear-gradient(135deg, #ff4d4d 0%, #b71c1c 100%);
+  box-shadow: 0 2px 6px rgba(225, 112, 85, 0.25);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.status-overdue {
+  background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+  box-shadow: 0 2px 6px rgba(214, 48, 49, 0.25);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.no-books-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 3.3rem;
+  color: #777;
+  font-style: italic;
+  font-weight: bold;
+  width: 100%;
+}
+
+.book__library-list-book-element-fine span {
+  color: red;
+}
+
+/* ===== SHELF ICON ===== */
+.home__book-action-shelf-icon {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #95a5a6;
+  transition: all 0.3s ease;
+}
+
+.home__book-action-shelf-icon:hover {
+  background-color: #667eea;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.home__book-action-shelf-icon.in-shelf {
+  background-color: #667eea;
+  color: #fff;
+}
+
+.home__book-action-shelf-icon.in-shelf:hover {
+  background-color: #764ba2;
+}
+
+/* ===================================================
+   RESPONSIVE BREAKPOINTS
+   =================================================== */
+
+/* ---- Tablet landscape & nhỏ hơn desktop (≤ 1199px) ---- */
+@media (max-width: 1199px) {
+  .book__library-list {
+    padding-right: 10px;
+  }
+
+  .book__library-list-book-element-image img {
+    height: 260px;
+  }
+}
+
+/* ---- Tablet portrait (≤ 991px) ---- */
+@media (max-width: 991px) {
+  .book__library-list {
+    padding-right: 0;
+  }
+
+  .my-book__library-list-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .my-book__library-list-toolbar-search {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .my-book__library-list-toolbar-sort {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .my-book__library-list-toolbar-sort select {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .book__library-list-book-element-image img {
+    height: 240px;
+  }
+
+  .no-books-message {
+    font-size: 2.4rem;
+  }
+}
+
+/* ---- Mobile landscape / small tablet (≤ 767px) ---- */
+@media (max-width: 767px) {
+  .book__library {
+    margin-top: 12px;
+  }
+
+  /* Toolbar stack hoàn toàn */
+  .my-book__library-list-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .my-book__library-list-toolbar-search {
+    max-width: 100%;
+  }
+
+  .my-book__library-list-toolbar-sort {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .my-book__library-list-toolbar-sort label {
+    font-size: 13px;
+  }
+
+  .my-book__library-list-toolbar-sort select {
+    width: 100%;
+    min-width: unset;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  /* Card layout: 2 cột trên tablet nhỏ/mobile ngang */
+  .book__library-list-book-element-wrapper {
+    padding: 0 8px;
+    margin-top: 20px;
+    padding-bottom: 16px;
+    border-right: none;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .book__library-list-book-element-image img {
+    height: 200px;
+    border-radius: 12px;
+  }
+
+  .book__library-list-book-element-title {
+    font-size: 1.4rem;
+  }
+
+  .book__library-list-book-element-author {
+    font-size: 1.3rem;
+  }
+
+  .book__library-list-book-element-information {
+    font-size: 1.3rem;
+    margin-top: 12px;
+    gap: 3px;
+  }
+
+  /* Action icons luôn hiện trên mobile (no hover) */
+  .home__book-action-icon {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .home__book-action-favorite-icon,
+  .home__book-action-preview-icon,
+  .home__book-action-borrow-icon,
+  .home__book-action-shelf-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
+  }
+
+  .no-books-message {
+    font-size: 1.8rem;
+    height: 150px;
+  }
+
+  .page-link {
+    padding: 7px 11px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ---- Mobile portrait (≤ 575px) ---- */
+@media (max-width: 575px) {
+  /* 2 cột đều nhau */
+  .book__library-list-book-element-wrapper {
+    width: 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 6px;
+    margin-top: 16px;
+    padding-bottom: 14px;
+  }
+
+  .book__library-list-book-element-image img {
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .book__library-list-book-element-title {
+    font-size: 1.3rem;
+  }
+
+  .book__library-list-book-element-author {
+    font-size: 1.2rem;
+  }
+
+  .book__library-list-book-element-information {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  .badge-favorite,
+  .extended-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .status-pending,
+  .status-approved,
+  .status-denied,
+  .status-returned,
+  .status-lost,
+  .status-overdue,
+  .book__library-list-book-element-status.status-not_borrowed {
+    font-size: 10px;
+    padding: 5px 8px;
+    border-radius: 10px;
+  }
+
+  .book__library-list-book-element-status.status-not_borrowed {
+    margin-top: 16px;
+  }
+
+  .no-books-message {
+    font-size: 1.6rem;
+    height: 120px;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  /* Pagination nhỏ hơn */
+  .page-link {
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
+
+  /* Search input nhỏ hơn */
+  .my-book__library-list-toolbar-search input {
+    font-size: 14px;
+    padding: 9px 14px 9px 34px;
+  }
+}
+
+/* ---- Màn hình rất nhỏ (≤ 374px) ---- */
+@media (max-width: 374px) {
+  .book__library-list-book-element-image img {
+    height: 150px;
+  }
+
+  .book__library-list-book-element-title {
+    font-size: 1.2rem;
+  }
+
+  .home__book-action-favorite-icon,
+  .home__book-action-preview-icon,
+  .home__book-action-borrow-icon,
+  .home__book-action-shelf-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+  }
+}

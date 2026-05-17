@@ -1,0 +1,1877 @@
+/* Reset & Base */
+.study-room {
+  font-size: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e293b;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Main Layout */
+.study-room__main {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Sidebar Filters */
+.study-room__filters {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.study-room__filters h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #2563eb;
+}
+
+.study-room__filters label {
+  font-size: 1.4rem;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.study-room__filters input,
+.study-room__filters select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.study-room__filters input:focus,
+.study-room__filters select:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.study-room__filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ===================== MOBILE FILTER TOGGLE ===================== */
+.study-room__filter-toggle {
+  display: none;
+  width: 100%;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+.study-room__btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.study-room__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.study-room__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.study-room__btn--primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: #fff;
+}
+
+.study-room__btn--primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+}
+
+.study-room__btn--secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 2px solid #e2e8f0;
+}
+
+.study-room__btn--secondary:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.study-room__btn--view {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+}
+
+.study-room__btn--view:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+}
+
+.study-room__btn--danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.study-room__btn--danger:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.study-room__btn--small {
+  padding: 8px 12px;
+  font-size: 1.3rem;
+  margin-right: 6px;
+}
+
+/* Tab Navigation */
+.study-room__tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: white;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.study-room__tab {
+  flex: 1;
+  padding: 14px 24px;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.study-room__tab:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+.study-room__tab.active {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* List Section */
+.study-room__list {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.study-room__list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.study-room__list-header label {
+  font-weight: 600;
+  color: #475569;
+  margin-right: 10px;
+}
+
+.study-room__list-header #sort-by {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  font-size: 1.4rem;
+  min-width: 200px;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.study-room__list-header #sort-by:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Schedule Filters */
+.study-room__schedule-filters {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.study-room__schedule-filters select {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  font-size: 1.4rem;
+  min-width: 200px;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.study-room__schedule-filters select:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Table */
+.study-room__table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  table-layout: fixed;
+}
+
+.study-room__table thead {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: white;
+}
+
+.study-room__table th {
+  padding: 16px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.study-room__table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.study-room__table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.study-room__table tbody tr:hover {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Column widths for booking tab */
+.study-room__table-book-room th:nth-child(1),
+.study-room__table-book-room td:nth-child(1) {
+  width: 10%;
+}
+
+.study-room__table-book-room th:nth-child(2),
+.study-room__table-book-room td:nth-child(2) {
+  width: 18%;
+}
+
+.study-room__table-book-room th:nth-child(3),
+.study-room__table-book-room td:nth-child(3) {
+  width: 10%;
+}
+
+.study-room__table-book-room th:nth-child(4),
+.study-room__table-book-room td:nth-child(4) {
+  width: 10%;
+}
+
+.study-room__table-book-room th:nth-child(5),
+.study-room__table-book-room td:nth-child(5) {
+  width: 12%;
+}
+
+.study-room__table-book-room th:nth-child(6),
+.study-room__table-book-room td:nth-child(6) {
+  width: 22%;
+}
+
+.study-room__table-book-room th:nth-child(7),
+.study-room__table-book-room td:nth-child(7) {
+  width: 25%;
+}
+
+/* Action buttons container */
+.study-room__table-book-room td:nth-child(7) {
+  white-space: nowrap;
+}
+
+/* Column widths for my schedule tab */
+.study-room__table-my-schedule th:nth-child(1),
+.study-room__table-my-schedule td:nth-child(1) {
+  width: 10%;
+}
+
+.study-room__table-my-schedule th:nth-child(2),
+.study-room__table-my-schedule td:nth-child(2) {
+  width: 18%;
+}
+
+.study-room__table-my-schedule th:nth-child(3),
+.study-room__table-my-schedule td:nth-child(3) {
+  width: 11%;
+}
+
+.study-room__table-my-schedule th:nth-child(4),
+.study-room__table-my-schedule td:nth-child(4) {
+  width: 10%;
+}
+
+.study-room__table-my-schedule th:nth-child(5),
+.study-room__table-my-schedule td:nth-child(5) {
+  width: 15%;
+}
+
+.study-room__table-my-schedule th:nth-child(6),
+.study-room__table-my-schedule td:nth-child(6) {
+  width: 20%;
+}
+
+.study-room__table-my-schedule th:nth-child(7),
+.study-room__table-my-schedule td:nth-child(7) {
+  width: 25%;
+}
+
+/* Action buttons container */
+.study-room__table-my-schedule td:nth-child(7) {
+  white-space: nowrap;
+}
+
+/* Type Badge */
+.study-room__type-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 80px;
+}
+
+.study-room__type-badge--group {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+}
+
+.study-room__type-badge--individual {
+  background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+  color: white;
+}
+
+/* Status */
+.study-room__status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.study-room__status--free {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.study-room__status--busy {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+/* Booking Status */
+.study-room__booking-status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 100px;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+}
+
+.study-room__booking-status--pending {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.study-room__booking-status--approved {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.study-room__booking-status--denied {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.study-room__booking-status--canceled {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: white;
+}
+
+.study-room__booking-status--no-show {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+}
+
+.study-room__booking-status--checked-in {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white;
+}
+
+/* Pagination */
+.study-room__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid #f1f5f9;
+}
+
+.study-room__pagination span {
+  font-weight: 600;
+  color: #475569;
+  font-size: 1.4rem;
+}
+
+/* Modal - Unique prefix */
+.study-room__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.study-room__modal-dialog {
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: studyRoomModalSlideIn 0.3s ease;
+}
+
+@keyframes studyRoomModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.study-room__modal-content {
+  padding: 0;
+}
+
+.study-room__modal-header {
+  padding: 20px 24px;
+  border-bottom: 2px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.study-room__modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.study-room__modal-title i {
+  color: #2563eb;
+}
+
+.study-room__modal-close {
+  background: transparent;
+  border: none;
+  font-size: 2.8rem;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.study-room__modal-close:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.study-room__modal-body {
+  padding: 24px;
+}
+
+.study-room__modal-footer {
+  padding: 16px 24px;
+  border-top: 2px solid #f1f5f9;
+  text-align: right;
+  background: #f8fafc;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Booking Form */
+.study-room__booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.study-room__form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.study-room__form-group label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+.study-room__form-required {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.study-room__form-control {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.study-room__form-control:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Time Slots */
+.study-room__time-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.study-room__time-slot {
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #475569;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.study-room__time-slot:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.study-room__time-slot--selected {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  border-color: #1e40af;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.study-room__time-slot--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #f1f5f9;
+}
+
+.study-room__time-slot--disabled:hover {
+  transform: none;
+  border-color: #e2e8f0;
+  box-shadow: none;
+}
+
+.study-room__time-slot i {
+  font-size: 1.6rem;
+}
+
+/* Booking Info */
+.study-room__booking-info {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 2px solid #bfdbfe;
+}
+
+.study-room__info-row {
+  padding: 8px 0;
+  font-size: 1.4rem;
+  color: #1e293b;
+}
+
+.study-room__info-row strong {
+  color: #1e40af;
+  min-width: 120px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+/* Room Detail */
+.study-room__room-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.study-room__detail-row {
+  padding: 12px 0;
+  font-size: 1.5rem;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.study-room__detail-row:last-child {
+  border-bottom: none;
+}
+
+.study-room__detail-row strong {
+  color: #1e40af;
+  min-width: 130px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+/* Modal Fade Animation */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.study-room__btn--warning {
+  background-color: #ffc107;
+  color: #000;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Member Selection */
+.study-room__member-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f8fafc;
+}
+
+.study-room__member-item {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.2s ease;
+}
+
+.study-room__member-item:last-child {
+  border-bottom: none;
+}
+
+.study-room__member-item:hover {
+  background: #eff6ff;
+}
+
+.study-room__member-item input[type="checkbox"] {
+  margin-right: 12px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+}
+
+.study-room__member-item input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.study-room__member-item label {
+  cursor: pointer;
+  flex: 1;
+  font-size: 1.4rem;
+  color: #334155;
+  font-weight: 500;
+  margin: 0;
+}
+
+.study-room__member-item input[type="checkbox"]:disabled + label {
+  cursor: not-allowed;
+  color: #94a3b8;
+}
+
+/* Member count badge */
+.study-room__member-count {
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* Add Member Section */
+.study-room__add-member {
+  margin-bottom: 16px;
+}
+
+.study-room__member-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 2px solid #bfdbfe;
+  border-radius: 10px;
+}
+
+.study-room__member-preview-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  font-size: 1.4rem;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.study-room__member-preview-info i {
+  font-size: 2rem;
+  color: #2563eb;
+}
+
+.study-room__member-code {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.study-room__member-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  background: #fef2f2;
+  border: 2px solid #fecaca;
+  border-radius: 10px;
+  color: #dc2626;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.study-room__member-error i {
+  font-size: 1.6rem;
+}
+
+/* Added Members List */
+.study-room__added-members {
+  margin-top: 16px;
+}
+
+.study-room__member-label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.study-room__member-list {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.study-room__member-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  background: white;
+  transition: background 0.2s ease;
+}
+
+.study-room__member-item:last-child {
+  border-bottom: none;
+}
+
+.study-room__member-item:hover {
+  background: #f8fafc;
+}
+
+.study-room__member-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  font-size: 1.4rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.study-room__member-info i {
+  font-size: 1.6rem;
+  color: #64748b;
+}
+
+.study-room__btn-remove {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.study-room__btn-remove:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.study-room__empty-members {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 1.3rem;
+  background: #f8fafc;
+  border: 2px dashed #e2e8f0;
+  border-radius: 10px;
+}
+
+.study-room__empty-members i {
+  font-size: 1.8rem;
+}
+
+.study-room__btn--search {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white;
+  white-space: nowrap;
+  padding: 12px 20px;
+}
+
+.study-room__btn--search:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+}
+
+.study-room__btn--search i {
+  font-size: 1.4rem;
+}
+
+.study-room__member-status--invited {
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+  color: #78350f;
+}
+
+.study-room__member-status--accepted {
+  background: linear-gradient(135deg, #6ee7b7 0%, #10b981 100%);
+  color: #064e3b;
+}
+
+.study-room__member-status--declined {
+  background: linear-gradient(135deg, #fca5a5 0%, #ef4444 100%);
+  color: #7f1d1d;
+}
+
+/* Column widths for invitations tab */
+.study-room__table-invitations th:nth-child(1),
+.study-room__table-invitations td:nth-child(1) {
+  width: 10%;
+}
+
+.study-room__table-invitations th:nth-child(2),
+.study-room__table-invitations td:nth-child(2) {
+  width: 15%;
+}
+
+.study-room__table-invitations th:nth-child(3),
+.study-room__table-invitations td:nth-child(3) {
+  width: 12%;
+}
+
+.study-room__table-invitations th:nth-child(4),
+.study-room__table-invitations td:nth-child(4) {
+  width: 13%;
+}
+
+.study-room__table-invitations th:nth-child(5),
+.study-room__table-invitations td:nth-child(5) {
+  width: 13%;
+}
+
+.study-room__table-invitations th:nth-child(6),
+.study-room__table-invitations td:nth-child(6) {
+  width: 27%;
+}
+
+/* Action buttons container for invitations */
+.study-room__table-invitations td:nth-child(6) {
+  white-space: nowrap;
+}
+
+.study-room__custom-time-input {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.study-room__time-field {
+  flex: 1;
+}
+
+.study-room__time-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.study-room__time-error {
+  padding: 8px 12px;
+  background-color: #fee;
+  border-left: 3px solid #ef4444;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* === SEAT SELECTION STYLES === */
+
+.study-room__seat-count {
+  font-size: 0.9em;
+  color: #667eea;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.study-room__seat-notice {
+  padding: 12px 16px;
+  background: #e3f2fd;
+  border-left: 4px solid #2196f3;
+  border-radius: 6px;
+  color: #1565c0;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.study-room__seat-loading {
+  padding: 30px;
+  text-align: center;
+  color: #667eea;
+  font-size: 1.1em;
+}
+
+.study-room__seat-error {
+  padding: 12px 16px;
+  background: #ffebee;
+  border-left: 4px solid #f44336;
+  border-radius: 6px;
+  color: #c62828;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.study-room__seat-empty {
+  padding: 40px;
+  text-align: center;
+  color: #999;
+  font-size: 1.1em;
+}
+
+.study-room__seat-empty i {
+  font-size: 3em;
+  display: block;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+/* Sơ đồ chỗ ngồi */
+.study-room__seat-map {
+  margin-top: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+}
+
+.study-room__screen {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 1.1em;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.study-room__screen i {
+  margin-right: 8px;
+}
+
+/* Grid chỗ ngồi */
+.study-room__seats-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.study-room__seat {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border: 2px solid transparent;
+}
+
+.study-room__seat-icon {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.study-room__seat-label {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* Chỗ còn trống */
+.study-room__seat--available {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.study-room__seat--available:hover {
+  background: #c8e6c9;
+  border-color: #66bb6a;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Chỗ đang chọn */
+.study-room__seat--selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #5568d3;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transform: scale(1.05);
+}
+
+.study-room__seat--selected:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #63408a 100%);
+}
+
+/* Chỗ đã đặt */
+.study-room__seat--booked {
+  background: #ffebee;
+  color: #c62828;
+  border-color: #ef9a9a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.study-room__seat--booked:hover {
+  transform: none;
+}
+
+/* Chú thích */
+.study-room__seat-legend {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding-top: 15px;
+  border-top: 2px dashed #dee2e6;
+}
+
+.study-room__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95em;
+}
+
+.study-room__legend-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 2px solid;
+}
+
+.study-room__legend-box--available {
+  background: #e8f5e9;
+  border-color: #a5d6a7;
+}
+
+.study-room__legend-box--selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #5568d3;
+}
+
+.study-room__legend-box--booked {
+  background: #ffebee;
+  border-color: #ef9a9a;
+}
+
+/* Scrollbar cho grid chỗ ngồi */
+.study-room__seats-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.study-room__seats-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.study-room__seats-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+/* Seat section in detail modal */
+.study-room__seat-section {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  padding: 15px 0 !important;
+  border-top: 1px solid #e9ecef;
+  margin-top: 15px;
+}
+
+.study-room__selected-seats-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.study-room__seat-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.study-room__seat-map--view-only {
+  margin-top: 15px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+}
+
+.study-room__seat-map--view-only .study-room__seat {
+  cursor: default;
+}
+
+.study-room__seat-map--view-only .study-room__seat:hover {
+  transform: none;
+}
+
+.study-room__seat-map--view-only .study-room__seat--selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #5568d3;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.study-room__seat-map--view-only .study-room__seat--selected .study-room__seat-icon {
+  color: white;
+}
+
+.study-room__seat-map--view-only .study-room__seat--selected .study-room__seat-label {
+  color: white;
+  font-weight: 700;
+}
+
+/* View mode for seat map - consistent styling */
+.study-room__seat--view-mode {
+  cursor: default;
+  pointer-events: none;
+}
+
+.study-room__seat--view-mode:hover {
+  transform: none;
+}
+
+.study-room__seat-map--view-only .study-room__seat--selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #5568d3;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transform: scale(1.05);
+}
+
+.study-room__seat-map--view-only .study-room__seat--selected .study-room__seat-icon,
+.study-room__seat-map--view-only .study-room__seat--selected .study-room__seat-label {
+  color: white;
+  font-weight: 700;
+}
+
+.study-room__seat-map--view-only .study-room__seat--available {
+  background: #f8f9fa;
+  color: #6c757d;
+  border-color: #dee2e6;
+  opacity: 0.6;
+}
+
+/* Schedule toggle */
+.study-room__schedule-toggle {
+  margin: 15px 0;
+}
+
+.study-room__room-schedule {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.study-room__schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.study-room__schedule-header h6 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+}
+
+.study-room__schedule-sort select {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  font-size: 1.3rem;
+}
+
+.study-room__schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.study-room__schedule-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.study-room__schedule-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.study-room__schedule-item--mine {
+  background: #e0f2fe;
+  border-color: #0ea5e9;
+}
+
+.study-room__schedule-item--conflict {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.study-room__schedule-date,
+.study-room__schedule-time,
+.study-room__schedule-seats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  color: #475569;
+}
+
+.study-room__seat-mini {
+  display: inline-block;
+  background: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-right: 4px;
+}
+
+.study-room__schedule-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+}
+
+/* Animation */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.study-room__schedule-booker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.study-room__schedule-item {
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+}
+
+/* Style cho button full width */
+.study-room__btn--full-width {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Style cho schedule section trong detail modal */
+.study-room__detail-schedule-section {
+  display: block !important;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+/* ================================================================
+   RESPONSIVE STYLES
+   ================================================================ */
+
+/* ---- Tablet: <= 1024px ---- */
+@media (max-width: 1024px) {
+  .study-room {
+    padding: 16px;
+  }
+
+  .study-room__main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Sidebar không sticky trên tablet/mobile */
+  .study-room__filters {
+    position: static;
+  }
+
+  /* Filter toggle button hiện ra */
+  .study-room__filter-toggle {
+    display: flex;
+  }
+
+  /* Filter body ẩn theo mặc định, JS toggle class .is-open */
+  .study-room__filters-body {
+    display: none;
+  }
+
+  .study-room__filters-body.is-open {
+    display: block;
+  }
+
+  .study-room__time-slots {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modal rộng hơn */
+  .study-room__modal-dialog {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+}
+
+/* ---- Mobile: <= 768px ---- */
+@media (max-width: 768px) {
+  .study-room {
+    padding: 12px;
+    font-size: 1.4rem;
+  }
+
+  /* ---- Tabs ---- */
+  .study-room__tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .study-room__tab {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+    padding: 12px 8px;
+    font-size: 1.3rem;
+    gap: 4px;
+  }
+
+  /* ---- List section ---- */
+  .study-room__list {
+    padding: 16px;
+  }
+
+  .study-room__list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .study-room__list-header #sort-by {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  /* ---- Schedule filter ---- */
+  .study-room__schedule-filters {
+    justify-content: stretch;
+  }
+
+  .study-room__schedule-filters select {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  /* ================================================================
+     TABLE -> CARD LAYOUT (mobile)
+     Giữ nguyên cấu trúc HTML, dùng CSS để chuyển bảng thành card
+     ================================================================ */
+  .study-room__table {
+    table-layout: auto;
+  }
+
+  .study-room__table thead {
+    display: none; /* Ẩn header */
+  }
+
+  .study-room__table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .study-room__table tbody tr {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: none !important;
+  }
+
+  .study-room__table tbody tr:hover {
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .study-room__table td {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: none;
+    font-size: 1.4rem;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    width: 100% !important;
+  }
+
+  .study-room__table td:last-child {
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+    margin-top: 6px;
+  }
+
+  /* Label giả từ data-label */
+  .study-room__table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #475569;
+    min-width: 110px;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  /* Cột action không cần label */
+  .study-room__table td.study-room__td--actions::before {
+    display: none;
+  }
+
+  .study-room__table td.study-room__td--actions {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  /* Fix width columns về auto khi card mode */
+  .study-room__table-book-room th,
+  .study-room__table-book-room td,
+  .study-room__table-my-schedule th,
+  .study-room__table-my-schedule td,
+  .study-room__table-invitations th,
+  .study-room__table-invitations td {
+    width: auto !important;
+  }
+
+  /* Buttons nhỏ hơn */
+  .study-room__btn--small {
+    padding: 8px 14px;
+    font-size: 1.3rem;
+  }
+
+  /* Pagination */
+  .study-room__pagination {
+    gap: 10px;
+  }
+
+  .study-room__pagination .study-room__btn {
+    padding: 8px 14px;
+    font-size: 1.3rem;
+  }
+
+  /* ---- Modal ---- */
+  .study-room__modal {
+    align-items: flex-end; /* Modal trượt lên từ dưới */
+  }
+
+  .study-room__modal-dialog {
+    max-width: 100%;
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 16px 16px 0 0;
+    animation: studyRoomModalSlideUp 0.3s ease;
+  }
+
+  @keyframes studyRoomModalSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .study-room__modal-title {
+    font-size: 1.7rem;
+  }
+
+  .study-room__modal-body {
+    padding: 16px;
+  }
+
+  .study-room__modal-footer {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .study-room__modal-footer .study-room__btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 120px;
+  }
+
+  /* ---- Booking form ---- */
+  .study-room__custom-time-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .study-room__booking-info {
+    padding: 12px 14px;
+  }
+
+  .study-room__info-row strong {
+    min-width: 100px;
+    font-size: 1.3rem;
+  }
+
+  .study-room__info-row {
+    font-size: 1.3rem;
+  }
+
+  /* ---- Detail rows ---- */
+  .study-room__detail-row strong {
+    min-width: 110px;
+    font-size: 1.3rem;
+  }
+
+  .study-room__detail-row {
+    font-size: 1.4rem;
+  }
+
+  /* ---- Member search ---- */
+  .study-room__add-member > div {
+    flex-direction: column !important;
+  }
+
+  .study-room__add-member > div input {
+    width: 100%;
+  }
+
+  .study-room__btn--search {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .study-room__member-preview {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .study-room__member-preview .study-room__btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ---- Seats grid ---- */
+  .study-room__seats-grid {
+    gap: 8px;
+  }
+
+  .study-room__seat {
+    width: 60px;
+    height: 60px;
+  }
+
+  .study-room__seat-icon {
+    font-size: 1.5em;
+  }
+
+  .study-room__seat-label {
+    font-size: 0.8em;
+  }
+
+  .study-room__seat-legend {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  /* ---- Schedule items ---- */
+  .study-room__schedule-item {
+    grid-template-columns: 1fr !important;
+    gap: 6px;
+  }
+
+  .study-room__schedule-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .study-room__schedule-sort select {
+    width: 100%;
+  }
+
+  /* ---- Filter sidebar mobile ---- */
+  .study-room__filters {
+    padding: 16px;
+  }
+
+  .study-room__filters h4 {
+    font-size: 1.6rem;
+  }
+
+  .study-room__filter-actions {
+    flex-direction: column;
+  }
+
+  .study-room__filter-actions .study-room__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ---- Small mobile: <= 480px ---- */
+@media (max-width: 480px) {
+  .study-room {
+    padding: 8px;
+  }
+
+  .study-room__list {
+    padding: 12px;
+  }
+
+  .study-room__tab {
+    padding: 10px 6px;
+    font-size: 1.2rem;
+  }
+
+  /* Tab 3 cột: booking + schedule + invite mỗi cái chiếm full width */
+  .study-room__tabs {
+    flex-direction: column;
+  }
+
+  .study-room__tab {
+    flex: 1 1 100%;
+  }
+
+  .study-room__btn {
+    font-size: 1.3rem;
+    padding: 9px 14px;
+  }
+
+  .study-room__seat {
+    width: 50px;
+    height: 50px;
+  }
+
+  .study-room__seat-icon {
+    font-size: 1.2em;
+    margin-bottom: 2px;
+  }
+
+  .study-room__seat-label {
+    font-size: 0.75em;
+  }
+
+  .study-room__modal-title {
+    font-size: 1.5rem;
+  }
+
+  .study-room__pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

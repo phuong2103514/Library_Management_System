@@ -1,0 +1,337 @@
+.detailbook {
+  margin-bottom: 40px;
+}
+
+.detailbook__image-book {
+  position: relative;
+  width: 100%;
+  height: 127vh;
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid #e6e6e6;
+}
+
+.detailbook__image-book img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailbook__information-book {
+  width: 100%;
+  height: 127vh;
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid #e6e6e6;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+.detailbook__information-book-title {
+  font-size: 3.6rem;
+  font-weight: 600;
+}
+
+.detailbook__information-book-header {
+  padding-bottom: 15px;
+  margin-bottom: 23px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.detailbook__information-book-header-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.detailbook__information-book-author {
+  border-right: 1px solid #e6e6e6;
+  padding-right: 25px;
+}
+
+.detailbook__information-book-star-wrapper {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-right: 1px solid #e6e6e6;
+  padding-right: 25px;
+}
+
+.detailbook__information-book-star-wrapper .rating {
+  position: relative;
+  top: -1px;
+}
+
+.detailbook__information-book-header-wrapper .title {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.detailbook__information-book-header-wrapper .content:hover {
+  cursor: pointer;
+  color: #f55c4e;
+}
+
+.detailbook__information-book-star-wrapper .number-start {
+  font-weight: bold;
+}
+
+.detailbook__information-book-price {
+  font-size: 2rem;
+  color: #f55c4e;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.detailbook__information-book-description {
+  font-size: 1.4rem;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.detailbook__information-book-publishing {
+  margin-top: 25px;
+  margin-bottom: 38px;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  row-gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.detailbook__information-book-publishing-title {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.detailbook__information-book-btn {
+  height: 52px;
+  width: 170px;
+  padding: 17px 32px;
+  background-color: #f65d4e;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailbook__information-book-btn:hover {
+  background-color: #e63727;
+}
+
+.detailbook__information-book-button {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.detailbook__information-book-btn-favorite-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detailbook__information-book-btn-favorite-wrapper i {
+  font-size: 1.9rem;
+  color: #ccc;
+}
+
+.detailbook__information-book-btn-favorite-wrapper:hover i {
+  color: red;
+}
+
+.detailbook__information-book-btn-favorite-wrapper:hover {
+  cursor: pointer;
+}
+
+.detailbook__relate-book {
+  margin-top: 32px;
+}
+
+.detailbook__relate-book-header {
+  font-size: 3.6rem;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+.detailbook__relate-book-image img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.detailbook input,
+.detailbook textarea,
+.detailbook select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.detailbook textarea {
+  resize: none;
+  max-height: 80px;
+}
+
+.detailbook__information-book-publishing-title {
+  display: flex;
+  align-items: center;
+}
+
+.detailbook__information-book-publishing-content {
+  margin-bottom: 0;
+}
+
+.detailbook__information-book-publishing input,
+.detailbook__information-book-publishing select {
+  margin-bottom: 0;
+}
+
+.detailbook__image-book-input-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.camera-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-icon {
+  background-color: #000;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-icon:hover {
+  background-color: #111;
+  transform: scale(1.1);
+}
+
+.wrapper-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.book__library-list-toolbar-search {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.book__library-list-toolbar-search input {
+  width: 100%;
+  padding: 10px 12px 10px 40px;
+  border: 1px solid #ccc;
+  border-radius: 36px;
+  font-size: 15px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.book__library-list-toolbar-search .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 42%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #888;
+  pointer-events: none;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #f55c4e;
+  color: white;
+  border: none;
+  border-radius: 36px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-left: 10px;
+  height: 42px;
+  position: relative;
+  top: -5px;
+}
+
+.search-button:hover {
+  background-color: #d74a3f;
+}
+
+.detailbook__information-book-btn[disabled] {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: 1px solid #aaa;
+  opacity: 0.8;
+}
+
+.pdf-upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  color: #495057;
+}
+
+.pdf-upload-label:hover {
+  background-color: #e9ecef;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.pdf-upload-label i {
+  font-size: 16px;
+  color: #dc3545;
+}
+
+.pdf-preview {
+  padding: 8px 12px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  font-size: 13px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pdf-preview:hover {
+  background-color: #c3e6cb;
+}
