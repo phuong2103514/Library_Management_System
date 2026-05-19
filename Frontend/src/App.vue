@@ -224,11 +224,8 @@ export default {
       isServerOnline: false,
       healthCheckInterval: null,
       quickQuestions: [
-        'Thư viện mở cửa lúc mấy giờ?',
-        'Làm thế nào để mượn sách?',
-        'Có những dịch vụ nào?',
         'Phí gia hạn thẻ là bao nhiêu?',
-        'Cách đặt phòng học?',
+        'Tìm cho tôi những cuốn sách về Blockchain?',
       ],
 
       isDragging: false,
