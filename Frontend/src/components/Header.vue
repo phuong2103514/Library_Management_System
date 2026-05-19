@@ -27,6 +27,7 @@
           <a @click="navigateTo('/library')" class="book__header-link">Thư viện</a>
           <a @click="navigateTo('/myBook')" class="book__header-link">Sách của tôi</a>
           <a @click="navigateTo('/studyRoom')" class="book__header-link">Phòng học</a>
+          <a @click="navigateTo('/myShelf')" class="book__header-link">Tủ sách</a>
         </div>
 
         <div class="book__header-unity-bar">
@@ -527,27 +528,35 @@ export default {
 .book__header {
   display: flex;
   align-items: center;
-  /* Navigation nằm giữa brand và unity-bar, không wrap */
   flex-wrap: nowrap;
   gap: 0;
 }
 
-/* Brand luôn co nhỏ được, không shrink navigation */
+/* Brand: dùng max-width + width % để tự co theo viewport */
 .book__header-brand {
-  flex-shrink: 0;
+  flex-shrink: 1;        /* CHO PHÉP co nhỏ khi thiếu chỗ */
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
-/* Navigation: flex-shrink cho phép co nhỏ chữ nhưng không wrap */
+.book__header-brand img {
+  display: block;
+  width: clamp(120px, 18vw, 240px);  /* Co từ 120px → 240px theo viewport */
+  height: auto;                        /* Giữ tỉ lệ gốc */
+  object-fit: contain;
+}
+
+/* Navigation: không bao giờ wrap, co được */
 .book__header-navigation {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;        /* QUAN TRỌNG: không bao giờ xuống dòng */
-  flex: 1 1 auto;           /* Chiếm space còn lại, nhưng có thể co */
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .book__header-link {
-  white-space: nowrap;      /* Mỗi link không wrap */
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -597,34 +606,44 @@ export default {
 /* ==================== BREAKPOINTS ==================== */
 
 /*
-  Desktop lớn (> 1200px): navigation hiện đầy đủ, font/padding bình thường
-  Desktop vừa (1024px – 1200px): navigation thu nhỏ font/padding để vừa 1 dòng
-  Tablet/Mobile (≤ 900px): hamburger, navigation thành slide-in panel
+  Desktop lớn (> 1300px)  : navigation đầy đủ, font/padding bình thường
+  Desktop vừa (1085–1300px): thu nhỏ font/padding để 5 link vừa 1 dòng
+  Desktop nhỏ (900–1084px) : thu nhỏ thêm, logo dùng clamp tự co
+  Tablet / Mobile (≤ 899px): hamburger, navigation thành slide-in panel
 */
 
-/* Desktop vừa: thu nhỏ link để tránh wrap */
-@media (max-width: 1200px) and (min-width: 1085px) {
+/* Desktop vừa: thu nhỏ link để 5 link không bị wrap */
+@media (max-width: 1300px) and (min-width: 1085px) {
   .book__header-link {
-    font-size: 1.3rem !important;
-    padding: 0 10px !important;
+    font-size: 1.25rem !important;
+    padding: 0 8px !important;
+  }
+}
+
+/* Desktop nhỏ: thu nhỏ thêm trước khi chuyển hamburger */
+@media (max-width: 1084px) and (min-width: 900px) {
+  .book__header-link {
+    font-size: 1.15rem !important;
+    padding: 0 6px !important;
   }
 }
 
 /* Tablet và Mobile: hamburger menu */
-@media (max-width: 1084px) {
+@media (max-width: 899px) {
   .hamburger-menu {
     display: flex;
   }
 
   .book__header {
     height: auto;
-    padding: 15px 0;
+    padding: 12px 0;
     position: relative;
   }
 
+  /* Logo responsive — clamp xử lý, không cần override thủ công */
   .book__header-brand img {
-    width: 200px;
-    height: 60px;
+    width: clamp(100px, 30vw, 200px);
+    height: auto;
   }
 
   /* Navigation trở thành slide-in panel */
@@ -632,7 +651,7 @@ export default {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 280px;
+    width: 270px;
     height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
@@ -644,7 +663,7 @@ export default {
     transition: left 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
-    flex: none; /* reset flex khi là panel */
+    flex: none;
   }
 
   .book__header-navigation.active {
@@ -661,7 +680,7 @@ export default {
     font-size: 1.5rem !important;
     transition: all 0.3s ease;
     cursor: pointer;
-    white-space: normal; /* Trong panel có thể wrap nếu cần */
+    white-space: normal;
   }
 
   .book__header-navigation .book__header-link:hover {
@@ -675,10 +694,10 @@ export default {
   }
 
   .book__header-unity-bar {
-    gap: 15px;
+    gap: 12px;
   }
 
-  /* Overlay khi menu mở */
+  /* Overlay mờ sau panel */
   .book__header-navigation.active::before {
     content: '';
     position: fixed;
@@ -686,21 +705,20 @@ export default {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
     backdrop-filter: blur(2px);
   }
 }
 
-/* Mobile nhỏ */
-@media (max-width: 768px) {
+/* Mobile vừa */
+@media (max-width: 600px) {
   .book__header-wrapper {
-    padding: 0 10px;
+    padding: 0 8px;
   }
 
   .book__header-brand img {
-    width: 160px;
-    height: 48px;
+    width: clamp(90px, 28vw, 160px);
   }
 
   .book__header-navigation {
@@ -708,34 +726,34 @@ export default {
   }
 
   .book__header-unity-bar {
-    gap: 12px;
+    gap: 10px;
   }
 
   .notif-dropdown {
-    width: calc(100vw - 40px);
-    right: -10px;
-    max-width: 350px;
+    width: calc(100vw - 32px);
+    right: -8px;
+    max-width: 340px;
   }
 
   .shelf-dropdown {
-    width: calc(100vw - 40px);
-    right: -10px;
-    max-width: 360px;
+    width: calc(100vw - 32px);
+    right: -8px;
+    max-width: 340px;
   }
 
   .book__header-search-dropdown input {
-    width: 200px;
+    width: 180px;
   }
 
   .book__header-search-result {
-    width: 200px;
+    width: 180px;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile nhỏ */
+@media (max-width: 420px) {
   .book__header-brand img {
-    width: 140px;
-    height: 42px;
+    width: clamp(80px, 26vw, 130px);
   }
 
   .book__header-navigation {
@@ -743,59 +761,60 @@ export default {
   }
 
   .book__header-navigation .book__header-link {
-    padding: 12px 25px !important;
+    padding: 12px 24px !important;
+    font-size: 1.4rem !important;
   }
 
   .book__header-unity-bar {
-    gap: 10px;
+    gap: 8px;
   }
 
   .book__header-dropdown {
-    right: -20px;
+    right: -16px;
   }
 
   .notif-dropdown {
-    width: calc(100vw - 20px);
-    right: -50px;
+    width: calc(100vw - 16px);
+    right: -40px;
     max-width: none;
   }
 
   .shelf-dropdown {
-    width: calc(100vw - 20px);
-    right: -50px;
+    width: calc(100vw - 16px);
+    right: -40px;
     max-width: none;
   }
 
   .shelf-item {
-    grid-template-columns: 55px 1fr 30px;
-    padding: 12px 15px;
+    grid-template-columns: 50px 1fr 28px;
+    padding: 10px 14px;
   }
 
   .shelf-item__image {
-    width: 55px;
-    height: 75px;
+    width: 50px;
+    height: 68px;
   }
 
   .book__header-search-dropdown {
-    right: -50px;
+    right: -40px;
   }
 
   .book__header-search-dropdown input {
-    width: 180px;
+    width: 160px;
   }
 
   .book__header-search-result {
-    width: 180px;
+    width: 160px;
   }
 
   .book__header-search-result-element {
     padding: 10px;
-    gap: 10px;
+    gap: 8px;
   }
 
   .book__header-search-result-element-image img {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
 }
 

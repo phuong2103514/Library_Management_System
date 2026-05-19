@@ -254,7 +254,13 @@
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+
+.book__library .tabs::-webkit-scrollbar { display: none; }
 
 .book__library .tab-btn {
   padding: 10px 20px;
@@ -265,8 +271,23 @@
   border-radius: 8px 8px 0 0;
   transition: all 0.3s ease;
   color: #555;
-  width: 180px;
+  width: auto;
   background: #e4e9f0;
+  flex-shrink: 0; /* thêm dòng này */
+  white-space: nowrap; /* thêm dòng này */
+}
+
+@media (max-width: 768px) {
+  .book__library .tabs {
+    flex-wrap: wrap;
+  }
+
+  .book__library .tab-btn {
+    flex: 1 1 calc(50% - 5px);
+    width: auto;
+    border-radius: 8px;
+    text-align: center;
+  }
 }
 
 .book__library .tab-btn:hover {
@@ -3105,4 +3126,1090 @@
 
 .home__book-action-shelf-icon.in-shelf:hover {
   background-color: #764ba2;
+}
+
+/* ===== RESPONSIVE TABSACH ===== */
+
+/* Filter overlay backdrop */
+.book__library-filter-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 1040;
+}
+
+.book__library-filter-overlay.open {
+  display: block;
+}
+
+/* Toggle filter button (chỉ hiện trên mobile) */
+.book__library-filter-toggle-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.book__library-filter-toggle-btn:hover {
+  background: #0056b3;
+}
+
+.book__library-filter-toggle-btn .filter-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Drawer sidebar trên mobile */
+@media (max-width: 991.98px) {
+  .book__library-filter-toggle-btn {
+    display: flex;
+  }
+
+  .book__library-filter-wrapper {
+    /* Drawer dạng slide-in từ trái */
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: 300px;
+    background: #fff;
+    z-index: 1050;
+    overflow-y: auto;
+    padding: 20px 0;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+    transform: translateX(-110%);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    /* override flex centering */
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .book__library-filter-wrapper.open {
+    transform: translateX(0);
+  }
+
+  /* Nút đóng trong drawer */
+  .book__library-filter-close-btn {
+    display: flex !important;
+  }
+
+  .book__library-list-wrapper {
+    /* Chiếm full width khi filter ẩn */
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Nút đóng drawer (ẩn trên desktop) */
+.book__library-filter-close-btn {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px 12px;
+  width: 100%;
+}
+
+.book__library-filter-close-btn button {
+  background: none;
+  border: none;
+  font-size: 2.4rem;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.book__library-filter-close-btn button:hover {
+  background: #f0f0f0;
+  color: #000;
+}
+
+@media (max-width: 575.98px) {
+  .book__library-filter-wrapper {
+    width: 85vw;
+  }
+
+  .book__library-list-book-element-image img {
+    height: 220px;
+  }
+}
+
+/* ===== RESPONSIVE BOOKLIST ===== */
+@media (max-width: 991.98px) {
+  /* 2 cột trên tablet khi filter đã ẩn */
+  .book__library-list-book-element-wrapper {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* 2 cột trên mobile — col-6 đã xử lý, tinh chỉnh thêm */
+  .book__library-list-book-element-wrapper {
+    padding: 0 6px;
+    margin-top: 16px;
+  }
+
+  .book__library-list-book-element-image img {
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .book__library-list-book-element-title {
+    font-size: 1.3rem;
+  }
+
+  .book__library-list-book-element-author {
+    font-size: 1.1rem;
+  }
+
+  .book__library-list-book-element-price {
+    font-size: 1.6rem;
+  }
+
+  .book__library-list-book-element-information {
+    margin-top: 10px;
+    gap: 1px;
+  }
+
+  /* Action icons luôn hiện trên mobile (không cần hover) */
+  .home__book-action-icon {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  /* Icon nhỏ lại cho vừa card nhỏ */
+  .home__book-action-favorite-icon,
+  .home__book-action-shelf-icon,
+  .home__book-action-borrow-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+
+  /* Badge yêu thích nhỏ hơn */
+  .badge-favorite {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  /* Pagination nhỏ hơn */
+  .page-link {
+    padding: 6px 10px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== RESPONSIVE THESIS ===== */
+
+/* --- Filter toggle button: ẩn trên desktop --- */
+.thesis__filter-toggle-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #ff7043;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.thesis__filter-toggle-btn:hover {
+  background: #e64a19;
+}
+
+.thesis__filter-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background: #f44336;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* --- Overlay backdrop --- */
+.thesis__filter-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1040;
+}
+
+.thesis__filter-overlay.open {
+  display: block;
+}
+
+/* --- Drawer header & footer: ẩn trên desktop --- */
+.thesis__filter-drawer-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  gap: 8px;
+}
+
+.thesis__filter-drawer-header i {
+  color: #ff7043;
+}
+
+.thesis__filter-drawer-close {
+  background: none;
+  border: none;
+  font-size: 2.8rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+
+.thesis__filter-drawer-close:hover {
+  color: #000;
+}
+
+.thesis__filter-drawer-footer {
+  display: none;
+  padding: 14px 20px 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.thesis__filter-apply-btn {
+  width: 100%;
+  padding: 13px;
+  background: #ff7043;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.thesis__filter-apply-btn:hover {
+  background: #e64a19;
+}
+
+/* ===== TABLET (max 991px) ===== */
+@media (max-width: 991.98px) {
+  .thesis_library {
+    padding: 0 10px 20px 10px;
+  }
+
+  /* Sidebar nằm ngang */
+  .thesis_sidebar {
+    margin-bottom: 16px;
+  }
+
+  .thesis_library .thesis_sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .thesis_library .thesis_sidebar a {
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-size: 1.4rem;
+    padding: 8px 14px;
+  }
+
+  /* Upload: stack dọc */
+  .thesis_content_upload .row {
+    flex-direction: column;
+  }
+
+  .thesis__image-wrapper {
+    height: 40vh;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .thesis__info {
+    height: auto;
+    padding: 20px;
+  }
+
+  /* Hiện nút toggle filter */
+  .thesis__filter-toggle-btn {
+    display: flex;
+  }
+
+  /* Drawer slide-in từ trái */
+  .thesis__filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 320px;
+    background: #fff;
+    z-index: 1050;
+    overflow-y: auto;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    transform: translateX(-110%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thesis__filters--drawer-open {
+    transform: translateX(0);
+  }
+
+  /* Header & footer drawer hiện ra */
+  .thesis__filter-drawer-header {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .thesis__filter-drawer-footer {
+    display: block;
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
+  /* Nội dung filter bên trong drawer */
+  .thesis__filters-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 20px;
+    margin-bottom: 14px;
+  }
+
+  .thesis__filters-row:first-of-type {
+    margin-top: 16px;
+  }
+
+  .thesis__filter-search {
+    max-width: 100%;
+  }
+
+  .thesis__filter-select {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .thesis__reset-btn {
+    width: 100%;
+  }
+}
+
+/* ===== MOBILE (max 767px) ===== */
+@media (max-width: 767.98px) {
+  .thesis_library {
+    padding: 0 8px 16px 8px;
+  }
+
+  .thesis_library .thesis_sidebar {
+    padding: 10px;
+  }
+
+  .thesis_library .thesis_sidebar ul {
+    flex-wrap: wrap;
+  }
+
+  .thesis_library .thesis_sidebar a {
+    font-size: 1.3rem;
+    padding: 7px 12px;
+  }
+
+  .thesis_library .thesis_content {
+    padding: 14px;
+  }
+
+  /* Upload form */
+  .thesis__image-wrapper {
+    height: 35vh;
+    padding: 12px;
+  }
+
+  .thesis__info {
+    padding: 14px;
+  }
+
+  .thesis__info-title {
+    font-size: 1.6rem;
+  }
+
+  .thesis__info input,
+  .thesis__info select {
+    font-size: 1.3rem;
+    padding: 7px 10px;
+  }
+
+  .thesis__pdf-upload {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .thesis__pdf-preview {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .thesis__btn-submit {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  /* Banner đợt nộp */
+  .thesis__dot-nop-banner,
+  .thesis__no-dot-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .thesis__dot-nop-details strong {
+    font-size: 1.5rem;
+  }
+
+  .thesis__dot-nop-details p,
+  .thesis__no-dot-banner p {
+    font-size: 1.3rem;
+  }
+
+  /* Grid luận văn: 2 cột */
+  .thesis__list-element-image {
+    height: 160px;
+  }
+
+  .thesis__list-element-title {
+    font-size: 1.3rem;
+  }
+
+  .thesis__list-element-author {
+    font-size: 1.1rem;
+  }
+
+  .thesis__list-element-level {
+    font-size: 1.1rem;
+  }
+
+  /* Modal chi tiết */
+  .thesis-modal-dialog {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .thesis-modal-body__details {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .thesis-modal-body__image {
+    width: 100%;
+    height: 220px;
+    padding: 12px;
+  }
+
+  .thesis-modal-body__info {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  .thesis-modal-title {
+    font-size: 2rem;
+  }
+
+  /* Drawer width nhỏ hơn trên mobile */
+  .thesis__filters {
+    width: 85vw;
+  }
+
+  /* Pagination */
+  .thesis__list-navigation-page .page-link {
+    padding: 6px 10px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== SMALL MOBILE (max 480px) ===== */
+@media (max-width: 480px) {
+  .thesis_library .thesis_sidebar ul {
+    flex-direction: column;
+  }
+
+  .thesis__image-wrapper {
+    height: 28vh;
+  }
+
+  .thesis-modal-body__image {
+    height: 180px;
+  }
+}
+
+/* ===== RESPONSIVE NIÊN LUẬN ===== */
+
+/* Filter toggle button cho niên luận */
+.nienluan__filter-toggle-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: background 0.2s;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.nienluan__filter-toggle-btn:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #6a3d91 100%);
+}
+
+.nienluan__filter-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Overlay */
+.nienluan__filter-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1040;
+}
+.nienluan__filter-overlay.open {
+  display: block;
+}
+
+/* Drawer header & footer: ẩn trên desktop */
+.nienluan__filter-drawer-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.nienluan__filter-drawer-header i {
+  color: #667eea;
+}
+
+.nienluan__filter-drawer-close {
+  background: none;
+  border: none;
+  font-size: 2.8rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+
+.nienluan__filter-drawer-close:hover {
+  color: #000;
+}
+
+.nienluan__filter-drawer-footer {
+  display: none;
+  padding: 14px 20px 20px;
+  border-top: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.nienluan__filter-apply-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.nienluan__filter-apply-btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== TABLET (max 991px) ===== */
+@media (max-width: 991.98px) {
+  .nienluan_library {
+    padding: 0 10px 20px 10px;
+  }
+
+  /* Sidebar nằm ngang */
+  .nienluan_sidebar {
+    margin-bottom: 16px;
+    padding: 10px;
+  }
+
+  .nienluan_sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .nienluan_sidebar a {
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-size: 1.4rem;
+    padding: 8px 14px;
+  }
+
+  /* Upload: stack dọc */
+  .nienluan_content_upload .row {
+    flex-direction: column;
+  }
+
+  .nienluan__image-wrapper {
+    height: 40vh;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .nienluan__info {
+    height: auto;
+    padding: 20px;
+  }
+
+  /* Hiện nút toggle filter */
+  .nienluan__filter-toggle-btn {
+    display: flex;
+  }
+
+  /* Drawer slide-in từ trái cho thesis__filters bên trong niên luận */
+  .nienluan_content .thesis__filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 320px;
+    background: #fff;
+    z-index: 1050;
+    overflow-y: auto;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    transform: translateX(-110%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nienluan_content .thesis__filters--drawer-open {
+    transform: translateX(0);
+  }
+
+  /* Header & footer drawer */
+  .nienluan_content .nienluan__filter-drawer-header {
+    display: flex;
+  }
+
+  .nienluan_content .nienluan__filter-drawer-footer {
+    display: block;
+  }
+
+  /* Nội dung filter bên trong drawer */
+  .nienluan_content .thesis__filters-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 20px;
+    margin-bottom: 14px;
+  }
+
+  .nienluan_content .thesis__filters-row:first-of-type {
+    margin-top: 16px;
+  }
+
+  .nienluan_content .thesis__filter-search {
+    max-width: 100%;
+  }
+
+  .nienluan_content .thesis__filter-select {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .nienluan_content .thesis__reset-btn {
+    display: none; /* ẩn vì đã có nút "Áp dụng" trong footer drawer */
+  }
+
+  /* Sub-tabs */
+  .nienluan-sub-tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nienluan-sub-tab-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: 10px 14px;
+  }
+
+  /* Table cuộn ngang */
+  .nienluan-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .management-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Banner đợt nộp */
+  .nienluan__dot-nop-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .nienluan__dot-nop-details strong {
+    font-size: 1.5rem;
+  }
+
+  /* Modal select dot */
+  .modal-select-dot-dialog {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  /* Dot notification */
+  .nienluan__dot-notification {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .nienluan__submitted-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nienluan__submitted-info > i {
+    top: 0;
+    font-size: 3rem;
+  }
+
+  /* Selected dot compact */
+  .nienluan__selected-dot-compact {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .nienluan__btn-change {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ===== MOBILE (max 767px) ===== */
+@media (max-width: 767.98px) {
+  .nienluan_library {
+    padding: 0 8px 16px 8px;
+  }
+
+  .nienluan_sidebar {
+    padding: 8px;
+  }
+
+  .nienluan_sidebar a {
+    font-size: 1.3rem;
+    padding: 7px 10px;
+  }
+
+  .nienluan_content {
+    padding: 14px;
+  }
+
+  .nienluan__image-wrapper {
+    height: 35vh;
+    padding: 12px;
+  }
+
+  .nienluan__info {
+    padding: 14px;
+  }
+
+  .nienluan__info-title {
+    font-size: 1.4rem;
+  }
+
+  .nienluan__pdf-upload {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nienluan__pdf-preview {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .nienluan__btn-submit {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  /* Management filter */
+  .management-util__filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .status-select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* Modal body details */
+  .modal-body__details {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-body__image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .modal-body__info {
+    font-size: 1.4rem;
+  }
+
+  .modal-body__info p {
+    grid-template-columns: 110px auto;
+  }
+
+  /* Drawer width nhỏ hơn */
+  .nienluan_content .thesis__filters {
+    width: 85vw;
+  }
+
+  .modal-select-dot-dialog {
+    width: 98%;
+    border-radius: 12px 12px 0 0;
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    max-height: 85vh;
+    margin: 0;
+  }
+
+  .modal-select-dot {
+    align-items: flex-end;
+  }
+
+  .modal-select-dot-item-info {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .nienluan-sub-tab-btn {
+    font-size: 1.3rem;
+    padding: 9px 12px;
+  }
+
+  /* Pagination */
+  .thesis__list-navigation-page .page-link {
+    padding: 6px 10px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== SMALL MOBILE (max 480px) ===== */
+@media (max-width: 480px) {
+  .nienluan_sidebar ul {
+    flex-direction: column;
+  }
+
+  .nienluan__image-wrapper {
+    height: 28vh;
+  }
+
+  .nienluan-sub-tabs {
+    flex-direction: column;
+  }
+
+  .nienluan-sub-tab-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modal-body__image {
+    height: 180px;
+  }
+}
+
+/* Desktop: hiển thị inline bình thường */
+.nienluan__quanly-filters {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.nienluan__quanly-filters .nienluan__filter-drawer-header,
+.nienluan__quanly-filters .nienluan__filter-drawer-footer {
+  display: none;
+}
+
+.nienluan__quanly-filters .nienluan__filter-drawer-body {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Mobile: drawer slide-in */
+@media (max-width: 991.98px) {
+  .nienluan__quanly-filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 320px;
+    background: #fff;
+    z-index: 1050;
+    overflow-y: auto;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    transform: translateX(-110%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nienluan__quanly-filters--open {
+    transform: translateX(0);
+  }
+
+  .nienluan__quanly-filters .nienluan__filter-drawer-header {
+    display: flex;
+  }
+
+  .nienluan__quanly-filters .nienluan__filter-drawer-footer {
+    display: block;
+    margin-top: auto;
+  }
+
+  .nienluan__quanly-filters .nienluan__filter-drawer-body {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px;
+    gap: 10px;
+  }
+
+  .nienluan__quanly-filters .status-select {
+    width: 100%;
+    min-width: unset;
+    margin-left: 0 !important;
+  }
+
+  .nienluan__quanly-filters .thesis__reset-btn {
+    display: none; /* ẩn, dùng nút "Áp dụng" trong footer */
+  }
+}
+
+@media (max-width: 767.98px) {
+  .nienluan__quanly-filters {
+    width: 85vw;
+  }
 }

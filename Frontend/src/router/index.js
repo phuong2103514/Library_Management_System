@@ -1,20 +1,20 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
     path: '/',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: () => import('../views/Signup.vue')
+    component: () => import('../views/Signup.vue'),
   },
   {
     path: '/home',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Home.vue'),
   },
   {
     path: '/homeAdmin',
@@ -95,87 +95,90 @@ const routes = [
         component: () => import('../views/SubmitStatistics.vue'),
       },
       {
-        path: 'statisticsThesis', 
+        path: 'statisticsThesis',
         name: 'StatisticsThesis',
         component: () => import('../views/StatisticsThesis.vue'),
       },
       {
-        path: 'statisticsEssay', 
+        path: 'statisticsEssay',
         name: 'StatisticsEssay',
         component: () => import('../views/StatisticsEssay.vue'),
       },
       {
         path: '',
-        redirect: 'managementLibraryCard'
-      }
-    ]
-  }
-  ,
+        redirect: 'managementLibraryCard',
+      },
+    ],
+  },
   {
     path: '/library',
     name: 'Library',
-    component: () => import('../views/Library.vue')
+    component: () => import('../views/Library.vue'),
   },
   {
     path: '/detailBook/:id',
     name: 'DetailBook',
     component: () => import('../views/DetailBook.vue'),
-    props: true
+    props: true,
   },
   {
     path: '/myBook',
     name: 'MyBook',
-    component: () => import('../views/MyBook.vue')
+    component: () => import('../views/MyBook.vue'),
   },
   {
     path: '/libraryCard',
     name: 'LibraryCard',
-    component: () => import('../views/LibraryCard.vue')
+    component: () => import('../views/LibraryCard.vue'),
   },
   {
     path: '/studyRoom',
     name: 'StudyRoom',
-    component: () => import('../views/StudyRoom.vue')
+    component: () => import('../views/StudyRoom.vue'),
   },
   {
     path: '/myShelf',
     name: 'MyShelf',
-    component: () => import('../views/MyShelf.vue')
+    component: () => import('../views/MyShelf.vue'),
   },
   {
     path: '/importBookApi',
     name: 'importBookApi',
-    component: () => import('../views/ImportBookApi.vue')
+    component: () => import('../views/ImportBookApi.vue'),
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: () => import('../views/NotFound.vue')
-  }
-]
+    component: () => import('../views/NotFound.vue'),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
 router.beforeEach((to, from, next) => {
-  const isLoggedIn = !!localStorage.getItem('_id')
-  const role = localStorage.getItem('role')
+  const isLoggedIn = !!localStorage.getItem('_id');
+  const role = localStorage.getItem('role');
 
   if (to.path === '/' && isLoggedIn) {
-    if (role === 'Admin') return next('/homeAdmin/managementBorrowBook')
-    return next('/home')
+    if (role === 'Admin') return next('/homeAdmin/managementBorrowBook');
+    return next('/home');
   }
 
-  const publicPages = ['/', '/signup']
-  const isPublic = publicPages.includes(to.path)
+  const publicPages = ['/', '/signup'];
+  const isPublic = publicPages.includes(to.path);
 
   if (!isLoggedIn && !isPublic) {
-    return next('/')
+    return next('/');
   }
 
-  next()
-})
+  if (to.path.startsWith('/homeAdmin') && role !== 'Admin' && role !== 'Manager') {
+    return next('/home');
+  }
 
-export default router
+  next();
+});
+
+export default router;

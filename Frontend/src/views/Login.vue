@@ -31,6 +31,7 @@
 
 <script>
 import { loginService } from '../services/auth/login.service';
+import { userState } from '../assets/js/userState';
 
 export default {
   name: 'Login',
@@ -49,7 +50,7 @@ export default {
         });
 
         if (response) {
-          if (response.role !== 'Admin' & response.role !== 'Manager') {
+          if (response.role !== 'Admin' && response.role !== 'Manager') {
             if (response.cardStatus === 'Bị khóa') {
               alert(
                 'Thẻ thư viện của bạn đang bị khóa.\nVui lòng đến thư viện để mở lại thẻ.'
@@ -71,6 +72,10 @@ export default {
 
           localStorage.setItem('_id', response._id);
           localStorage.setItem('role', response.role);
+          userState._id = response._id;
+          userState.role = response.role;
+          userState.hoTen = response.hoTen || null;
+
           if(response.role === "User") {
             localStorage.setItem('userType', response.userType);
           }
