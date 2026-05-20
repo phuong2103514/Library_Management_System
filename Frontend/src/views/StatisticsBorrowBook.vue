@@ -484,7 +484,7 @@
 <script>
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts.vfs;
 import * as XLSX from 'xlsx';
 import { bookService } from '../services/book/book.service';
 
