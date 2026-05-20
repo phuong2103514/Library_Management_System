@@ -163,7 +163,9 @@ router.beforeEach((to, from, next) => {
   const role = localStorage.getItem('role');
 
   if (to.path === '/' && isLoggedIn) {
-    if (role === 'Admin') return next('/homeAdmin/managementBorrowBook');
+    if (role === 'Admin' || role === 'Manager') {
+      return next('/homeAdmin/managementLibraryCard');
+    }
     return next('/home');
   }
 
@@ -174,7 +176,11 @@ router.beforeEach((to, from, next) => {
     return next('/');
   }
 
-  if (to.path.startsWith('/homeAdmin') && role !== 'Admin' && role !== 'Manager') {
+  if (
+    to.path.startsWith('/homeAdmin') &&
+    role !== 'Admin' &&
+    role !== 'Manager'
+  ) {
     return next('/home');
   }
 
