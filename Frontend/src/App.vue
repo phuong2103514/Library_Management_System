@@ -225,7 +225,7 @@ export default {
       healthCheckInterval: null,
       quickQuestions: [
         'Phí gia hạn thẻ là bao nhiêu?',
-        'Tìm cho tôi những cuốn sách về Blockchain?',
+        'Có sách về thể loại blockchain không?',
       ],
 
       isDragging: false,
