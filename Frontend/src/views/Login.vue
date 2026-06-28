@@ -20,6 +20,10 @@
 
         <button type="submit" class="login-form-btn">Đăng nhập</button>
       </div>
+
+      <div class="login-form-ask">
+        Chào mừng bạn đến thư viện của trường?
+      </div>
     </form>
   </div>
 </template>
