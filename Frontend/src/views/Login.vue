@@ -20,11 +20,6 @@
 
         <button type="submit" class="login-form-btn">Đăng nhập</button>
       </div>
-
-      <div class="login-form-ask">
-        Bạn chưa có tài khoản?
-        <router-link to="/signup"><span>Đăng ký</span></router-link>
-      </div>
     </form>
   </div>
 </template>
